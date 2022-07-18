@@ -135,7 +135,7 @@ func main() {
 	// 2.reptile routine
 	for i := 1; i <= 46; i++ {
 		wg.Add(1)
-		go GetAllPageUrls("http://so.5tu.cn/pic/gaoqingmeinvtuku-p" + strconv.Itoa(i) + ".html")
+		go GetAllPageUrls("http://xxx" + strconv.Itoa(i) + ".html")
 	}
 	wg.Wait()
 
