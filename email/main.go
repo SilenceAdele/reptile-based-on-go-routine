@@ -7,33 +7,6 @@ import (
 	"regexp"
 )
 
-//from url get web page response body content,then get email
-func GetEmail() {
-	//get web page response body content from url
-	resp, err := http.Get("https://tieba.baidu.com/p/2366935784")
-	HandleErr(err, "http.Get url")
-	defer resp.Body.Close()
-
-	//read page content
-	b, err2 := ioutil.ReadAll(resp.Body)
-	HandleErr(err2, "ioutil.ReadAll")
-
-	//byte to string
-	pageStr := string(b)
-
-	//define emial regexp
-	emialRegx := `\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*`
-	regx := regexp.MustCompile(emialRegx)
-
-	//get result
-	result := regx.FindAllStringSubmatch(pageStr, -1)
-
-	//loop email
-	for _, res := range result {
-		fmt.Println(res[0])
-	}
-}
-
 //get web page content
 func GetPageContent(url string) (str string) {
 	resp, err := http.Get(url)
@@ -74,5 +47,5 @@ func HandleErr(err error, why string) {
 }
 func main() {
 	//GetEmail()
-	GetEmailContent("https://tieba.baidu.com/p/2366935784")
+	GetEmailContent("https://xxxxxxx")
 }
