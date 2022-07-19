@@ -80,9 +80,9 @@ func CheckTask() {
 	}
 	wg.Done()
 }
-func downImages() {
+func DownImages() {
 	for url := range chanImagesUrls {
-		filename := getFileName(url)
+		filename := GetFileName(url)
 		ok := DownloadImage(url, filename)
 		if ok {
 			fmt.Println(filename + "download success")
@@ -93,7 +93,7 @@ func downImages() {
 	wg.Done()
 }
 
-func getFileName(url string) (filename string) {
+func GetFileName(url string) (filename string) {
 	i := strings.LastIndex(url, "/")
 
 	timePrefix := strconv.Itoa(int(time.Now().Unix()))
@@ -147,7 +147,7 @@ func main() {
 	// 4.download go routine
 	for i := 0; i < 5; i++ {
 		wg.Add(1)
-		go downImages()
+		go DownImages()
 	}
 	wg.Wait()
 }
