@@ -31,7 +31,7 @@ func GetPagContent(url string) (str string) {
 
 //get all page urls
 func GetAllPageUrls(url string) {
-	urls := GetOnePageUris(url)
+	urls := GetOnePageUrls(url)
 
 	for _, url := range urls {
 		chanImagesUrls <- url
@@ -46,7 +46,7 @@ func GetAllPageUrls(url string) {
 }
 
 //get one page urls
-func GetOnePageUris(url string) (urls []string) {
+func GetOnePageUrls(url string) (urls []string) {
 	str := GetPagContent(url)
 	imgRegx := `https?://[^"]+?(\.((jpg)|(png)|(jpeg)|(gif)|(bmp)))`
 
